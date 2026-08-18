@@ -500,7 +500,7 @@ s32 _rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, _adapter *padapter)
 #endif
 
 #ifdef RTW_PHL_TX //alloc xmit resource
-	printk("eric-tx CALL alloc_txring !!!!\n");
+//	printk("eric-tx CALL alloc_txring !!!!\n");
 	if (alloc_txring(padapter) == _FAIL) {
 		RTW_ERR("[core] alloc_txring fail !!!\n");
 		res = _FAIL;
@@ -6764,8 +6764,10 @@ s32 core_tx_update_pkt(_adapter *padapter, struct xmit_frame *pxframe, struct sk
 	PHLTX_LOG;
 
 //rtw_phl_tx todo, BR EXT
+#ifdef CONFIG_BR_EXT
 	if (core_br_client_tx(padapter, pxframe, pskb) == FAIL)
 		return FAIL;
+#endif
 
 	return SUCCESS;
 }

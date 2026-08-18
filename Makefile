@@ -138,7 +138,7 @@ CONFIG_RTW_EDCCA_MODE_SEL = NORMAL
 CONFIG_SIGNAL_SCALE_MAPPING = n
 CONFIG_80211W = y
 CONFIG_REDUCE_TX_CPU_LOADING = n
-CONFIG_BR_EXT = y
+CONFIG_BR_EXT = n
 CONFIG_TDLS = n
 CONFIG_WIFI_MONITOR = n
 CONFIG_MCC_MODE = n
@@ -967,8 +967,7 @@ modules:
 strip:
 	$(CC_STRIP) $(MODULE_NAME).ko --strip-unneeded
 
-install:
-	all
+install: all
 	install -p -m 644 $(MODULE_NAME).ko  $(MODDESTDIR)
 	/sbin/depmod -a ${KVER}
 	cp -f $(MODULE_NAME).conf /etc/modprobe.d
@@ -1051,6 +1050,7 @@ clean:
 	rm -fr Module.symvers ; rm -fr Module.markers ; rm -fr modules.order ; rm -fr .module-common.o
 	rm -fr *.mod.c *.mod *.o .*.cmd *.ko *~
 	rm -fr .tmp_versions
+	rm -fr MOK.der MOK.priv
 endif
 
 ############ ANDROID COMMON KERNEL ############
