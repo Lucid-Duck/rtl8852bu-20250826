@@ -8416,10 +8416,14 @@ static s32 cfg80211_rtw_remain_on_channel(struct wiphy *wiphy,
 	enum nl80211_channel_type channel_type,
 #endif
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 3, 0))
-	unsigned int duration, u64 cookie_in)
+	unsigned int duration, u64 cookie_in
 #else
-	unsigned int duration, u64 *cookie)
+	unsigned int duration, u64 *cookie
 #endif
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0))
+	, const u8 *rx_addr
+#endif
+	)
 {
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 3, 0))
 	u64 *cookie = &cookie_in;
@@ -8548,10 +8552,14 @@ static s32 cfg80211_rtw_remain_on_channel(struct wiphy *wiphy,
 	enum nl80211_channel_type channel_type,
 #endif
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 3, 0))
-	unsigned int duration, u64 cookie_in)
+	unsigned int duration, u64 cookie_in
 #else
-	unsigned int duration, u64 *cookie)
+	unsigned int duration, u64 *cookie
 #endif
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0))
+	, const u8 *rx_addr
+#endif
+	)
 {
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 3, 0))
 	u64 *cookie = &cookie_in;
